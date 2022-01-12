@@ -189,6 +189,10 @@ export class Context {
         const name = getHumanName(
             nameOverride ?? exportSymbol?.name ?? symbol?.name ?? "unknown"
         );
+
+        // TODO: the type is not defined here
+        console.log(name, this.scope);
+
         const reflection = new DeclarationReflection(name, kind, this.scope);
         if (this.shouldBeStatic) {
             reflection.setFlag(ReflectionFlag.Static);

@@ -429,10 +429,10 @@ const typeRenderers: {
 function renderType(context: DefaultThemeRenderContext, type: Type | undefined, options?: TypeInlinePartialsOptions) {
     if (!type) {
         return <span class="tsd-signature-type">any</span>;
+    } else {
+        const renderFn = typeRenderers[type.type];
+        return renderFn(context, type as never, options ?? {});
     }
-
-    const renderFn = typeRenderers[type.type];
-    return renderFn(context, type as never, options ?? {});
 }
 
 export function type(context: DefaultThemeRenderContext, type: Type | undefined) {

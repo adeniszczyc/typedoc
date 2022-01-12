@@ -775,9 +775,25 @@ footer .tsd-legend {
     font-weight: normal;
 }
 
-.tsd-anchor {
-    position: absolute;
-    top: -100px;
+.tsd-anchor-icon {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.tsd-anchor:hover svg {
+    visibility: visible;
+}
+.tsd-anchor svg {
+    visibility: hidden;
+}
+
+.tsd-anchor-target::before {
+    display: block; 
+    content: " "; 
+    margin-top: -285px; 
+    height: 285px; 
+    visibility: hidden; 
+    pointer-events: none;
 }
 
 .tsd-member {
