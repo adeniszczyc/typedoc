@@ -340,7 +340,9 @@ export interface ReflectionFlags
     extends Partial<S<M.ReflectionFlags, BoolKeys<M.ReflectionFlags>>> {}
 
 export interface Comment
-    extends Partial<S<M.Comment, "shortText" | "text" | "returns" | "tags">> {}
+    extends Partial<
+        S<M.Comment, "shortText" | "text" | "returns" | "tags" | "throwsTags">
+    > {}
 
 export interface CommentTag extends S<M.CommentTag, "text"> {
     tag: M.CommentTag["tagName"];

@@ -57,5 +57,18 @@ export const memberSignatureBody = (
                 {props.type instanceof ReflectionType && context.parameter(props.type.declaration)}
             </>
         )}
+
+        {props.comment?.throwsTags && props.comment?.throwsTags.length > 0 && (
+            <>
+                <h4 class="tsd-returns-title">Throws</h4>
+                <ul class="tsd-parameters">
+                    {props.comment?.throwsTags.map((throwTag) => (
+                        <li>
+                            <Raw html={context.markdown(throwTag.text)} />
+                        </li>
+                    ))}
+                </ul>
+            </>
+        )}
     </>
 );

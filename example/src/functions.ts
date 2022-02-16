@@ -8,6 +8,22 @@ export function sqrt(x: number): number {
     return Math.sqrt(x);
 }
 
+export class OutOfRangeError extends Error {}
+
+/**
+ * Calculates the square root of a positive number.
+ *
+ * @param x the number to calculate the root of.
+ * @throws {@link OutOfRangeError} Throws an error if `x` is negative
+ * @returns the square root if `x`
+ */
+export function sqrtPostiveNumber(x: number): number {
+    if (x < 0) {
+        throw new Error(`Provided value ${x} is < 0`);
+    }
+    return Math.sqrt(x);
+}
+
 /**
  * Calculates the square root of a number.
  *

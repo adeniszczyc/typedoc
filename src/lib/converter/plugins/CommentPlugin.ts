@@ -331,11 +331,21 @@ export class CommentPlugin extends ConverterComponent {
             comment.removeTags("returns");
         }
 
+        if (comment && comment.hasTag("throws")) {
+            comment.throwsTags = comment.getTags("throws");
+            comment.removeTags("throws");
+        }
+
         signatures.forEach((signature) => {
             let childComment = signature.comment;
             if (childComment && childComment.hasTag("returns")) {
                 childComment.returns = childComment.getTag("returns")!.text;
                 childComment.removeTags("returns");
+            }
+
+            if (childComment && childComment.hasTag("throws")) {
+                childComment.throwsTags = childComment.getTags("throws");
+                childComment.removeTags("throws");
             }
 
             if (comment) {
@@ -346,6 +356,7 @@ export class CommentPlugin extends ConverterComponent {
                 childComment.shortText ||= comment.shortText;
                 childComment.text ||= comment.text;
                 childComment.returns ||= comment.returns;
+                childComment.throwsTags ||= comment.throwsTags;
                 childComment.tags = childComment.tags.length
                     ? childComment.tags
                     : [...comment.tags];

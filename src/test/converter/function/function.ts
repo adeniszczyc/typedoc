@@ -301,5 +301,28 @@ export function boolOrUndef(x: number) {
     return undefined;
 }
 
+/**
+ * This is a function which throws.
+ *
+ * @param rest  The rest parameter.
+ * @throws {@link Error} Throws an error
+ * @return This is the return value of the function.
+ */
+export function functionWhichThrows(): string {
+    throw new Error("Throw exception");
+}
+
+/**
+ * This is a function which throws multiple errors.
+ *
+ * @param rest  The rest parameter.
+ * @throws {@link Error} Throws an error
+ * @throws {@link AnotherError} Throws another type of error
+ * @return This is the return value of the function.
+ */
+export function functionWhichThrowsMultiple(): string {
+    throw new Error("Throw exception");
+}
+
 export function merged() {}
 merged.nsFn = function () {};

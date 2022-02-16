@@ -30,6 +30,11 @@ export class CommentSerializer extends SerializerComponent<Comment> {
         if (comment.tags.length) {
             obj.tags = comment.tags.map((tag) => this.owner.toObject(tag));
         }
+        if (comment.throwsTags.length) {
+            obj.throwsTags = comment.throwsTags.map((tag) =>
+                this.owner.toObject(tag)
+            );
+        }
 
         return obj;
     }

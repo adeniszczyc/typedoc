@@ -27,6 +27,11 @@ export class Comment {
     returns?: string;
 
     /**
+     * The ```@throws``` tags if present.
+     */
+    throwsTags: CommentTag[] = [];
+
+    /**
      * All associated tags.
      */
     tags: CommentTag[] = [];
@@ -76,6 +81,15 @@ export class Comment {
         });
     }
 
+    getTags(tagName: string, paramName?: string): CommentTag[] {
+        return this.tags.filter((tag) => {
+            return (
+                tag.tagName === tagName &&
+                (paramName === void 0 || tag.paramName === paramName)
+            );
+        });
+    }
+
     /**
      * Removes all tags with the given tag name from the comment.
      * @param tagName
@@ -96,6 +110,8 @@ export class Comment {
         this.shortText = comment.shortText;
         this.text = comment.text;
         this.returns = comment.returns;
+        this.throwsTags = comment.throwsTags;
+
         const overrideTags: CommentTag[] = comment.tags
             .filter((tag) => COPIED_TAGS.includes(tag.tagName))
             .map((tag) => new CommentTag(tag.tagName, tag.paramName, tag.text));
